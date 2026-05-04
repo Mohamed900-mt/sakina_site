@@ -6,32 +6,32 @@
     <title>موقع سكينة - طمأنينة لقلبك</title>
     <style>
         :root { --main: #1b4d3e; --accent: #c5a059; --bg: #f8f5f0; --white: #ffffff; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; text-align: center; color: #333; }
-        
-        /* الهيدر */
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; text-align: center; color: #333; overflow-x: hidden; }
         .header { background: var(--main); color: white; padding: 20px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
         .back-btn { float: right; background: var(--accent); border: none; color: white; padding: 6px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; display: none; }
-
         .container { padding: 20px; max-width: 600px; margin: auto; }
+        .telegram-btn { background: var(--white); color: var(--main); border: 2px solid var(--accent); padding: 15px; border-radius: 15px; display: block; text-decoration: none; font-weight: bold; margin-bottom: 20px; font-size: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         
-        /* القائمة الرئيسية */
+        /* تصميم أزرار التواصل الجديدة */
+        .social-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
+        .social-btn { flex: 1; padding: 12px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; }
+        .btn-contact { background: #0088cc; color: white; }
+        .btn-channel { background: var(--main); color: white; border: 1px solid var(--accent); }
+        .social-btn:active { transform: scale(0.95); }
+
         .card { background: var(--white); border-radius: 15px; padding: 20px; margin: 15px 0; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: 0.3s; border-right: 8px solid var(--accent); }
         .card:hover { transform: translateY(-3px); }
-        .card h3 { margin: 0; color: var(--main); }
-
-        /* واجهات المحتوى */
-        .view-container { display: none; animation: fadeIn 0.5s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        .content-box { background: var(--white); padding: 25px; border-radius: 20px; font-size: 24px; line-height: 1.8; margin: 15px 0; min-height: 300px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); position: relative; }
-        
-        select { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid var(--main); font-size: 18px; margin-bottom: 15px; background: white; }
-        
-        .controls { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
-        .btn { background: var(--main); color: white; border: none; padding: 12px 20px; border-radius: 10px; cursor: pointer; font-size: 16px; flex: 1; font-weight: bold; }
-        .btn-count { background: var(--accent); font-size: 20px; }
-
-        .counter-badge { background: var(--accent); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-bottom: 10px; display: inline-block; }
+        .view-container { display: none; animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .content-box { background: var(--white); padding: 25px; border-radius: 20px; font-size: 20px; line-height: 1.8; margin: 15px 0; min-height: 250px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); white-space: pre-wrap; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .tafseer-box { font-size: 17px; color: #555; background: #f0f0f0; padding: 15px; border-radius: 10px; margin-top: 15px; border-top: 3px solid var(--accent); width: 100%; text-align: right; box-sizing: border-box; }
+        .controls { display: flex; justify-content: center; gap: 10px; margin-top: 15px; width: 100%; }
+        .btn { background: var(--main); color: white; border: none; padding: 15px 20px; border-radius: 10px; cursor: pointer; font-size: 16px; flex: 1; font-weight: bold; transition: 0.2s; }
+        .btn:active { transform: scale(0.95); }
+        .big-counter { font-size: 80px; color: var(--accent); font-weight: bold; margin: 10px 0; }
+        .prayer-time-item { display: flex; justify-content: space-between; padding: 12px; border-bottom: 1px solid #eee; width: 100%; font-weight: bold; box-sizing: border-box; }
+        .checklist-item { display: flex; align-items: center; gap: 15px; padding: 15px; border-bottom: 1px solid #eee; width: 100%; text-align: right; cursor: pointer; box-sizing: border-box; }
+        .checked-text { text-decoration: line-through; color: #888; }
     </style>
 </head>
 <body>
@@ -43,154 +43,126 @@
 
 <div class="container">
     <div id="main-menu">
-        <div class="card" onclick="openQuran()">
-            <h3>📖 المصحف الشريف</h3>
-            <p>قراءة وتدبر آيات الله</p>
+        <a href="https://t.me/ssakinaaa_bot" target="_blank" class="telegram-btn">🚀 افتح البوت على تيليجرام</a>
+        
+        <div class="social-buttons">
+            <a href="https://t.me/vuoar" target="_blank" class="social-btn btn-contact">💬 تواصل معنا</a>
+            <a href="https://t.me/sakiina3" target="_blank" class="social-btn btn-channel">📢 قناتنا</a>
         </div>
-        <div class="card" onclick="openAzkarMenu()">
-            <h3>📿 حصن المسلم (الأذكار)</h3>
-            <p>صباح، مساء، صلاة، ونوم</p>
-        </div>
-        <div class="card" onclick="window.open('https://surah.com', '_blank')">
-            <h3>🎧 الاستماع للقرآن</h3>
-            <p>بأصوات نخبة من القراء</p>
-        </div>
+
+        <div class="card" onclick="openPrayers()"><h3>🕌 مواقيت الصلاة</h3></div>
+        <div class="card" onclick="openQuran()"><h3>📖 المصحف الشريف</h3></div>
+        <div class="card" onclick="openAzkarMenu()"><h3>📿 حصن المسلم الكامل</h3></div>
+        <div class="card" onclick="getRandomAyah()"><h3>✨ رسالة لقلبك</h3></div>
+        <div class="card" onclick="openStories()"><h3>📜 قصص الأنبياء</h3></div>
+        <div class="card" onclick="openChecklist()"><h3>✅ ورد المحاسبة اليومي</h3></div>
+        <div class="card" onclick="getRandomSunnah()"><h3>🌱 سنن مهجورة</h3></div>
+        <div class="card" onclick="openChallenge()"><h3>🔢 تحدي الألف (سبحة)</h3></div>
     </div>
 
+    <div id="prayer-view" class="view-container"><div id="prayer-list" class="content-box"></div></div>
+    <div id="checklist-view" class="view-container"><div id="checklist-container" class="content-box"></div></div>
     <div id="azkar-menu" class="view-container">
         <div class="card" onclick="startAzkar('morning')"><h3>☀️ أذكار الصباح</h3></div>
         <div class="card" onclick="startAzkar('evening')"><h3>🌙 أذكار المساء</h3></div>
         <div class="card" onclick="startAzkar('prayer')"><h3>🕌 أذكار بعد الصلاة</h3></div>
         <div class="card" onclick="startAzkar('sleep')"><h3>💤 أذكار النوم</h3></div>
-        <div class="card" onclick="startAzkar('wake')"><h3>🔔 أذكار الاستيقاظ</h3></div>
     </div>
 
-    <div id="quran-view" class="view-container">
-        <select id="surahSelect" onchange="fetchSurah(this.value)"></select>
-        <div id="quran-text" class="content-box">جاري فتح المصحف...</div>
-        <div class="controls">
+    <div id="content-view" class="view-container">
+        <select id="surahSelect" style="width:100%; padding:12px; border-radius:10px; margin-bottom:10px; display:none;" onchange="fetchSurah(this.value)"></select>
+        <div id="display-text" class="content-box"></div>
+        <div id="content-controls" class="controls" style="display:none;">
             <button class="btn" onclick="moveSurah(1)">السورة التالية</button>
             <button class="btn" onclick="moveSurah(-1)">السورة السابقة</button>
         </div>
+        <div id="extra-btn-container" class="controls"></div>
     </div>
 
-    <div id="azkar-active" class="view-container">
-        <div class="counter-badge" id="zikr-target"></div>
-        <div id="azkar-text" class="content-box" onclick="countZikr()"></div>
-        <div class="counter" style="font-size: 50px; color: var(--accent); font-weight: bold;" id="zikr-count">0</div>
-        <p style="font-size: 14px; color: #888;">اضغط على النص للتسبيح</p>
+    <div id="active-zikr-view" class="view-container">
+        <div id="target-info" style="background:var(--accent); color:white; padding:5px 15px; border-radius:20px; font-size:14px; margin-bottom:10px; display:inline-block;"></div>
+        <div id="active-text" class="content-box" onclick="handleZikrClick()"></div>
+        <div class="big-counter" id="main-counter">0</div>
         <div class="controls">
-            <button class="btn" style="background:#2ecc71" onclick="nextZikr()">الذكر التالي</button>
+            <button class="btn" id="nextZikrBtn" style="background:#2ecc71" onclick="goToNextZikr()">الذكر التالي</button>
+            <button class="btn" id="resetChallengeBtn" onclick="resetCounter()" style="background:#e74c3c; display:none;">تصفير</button>
         </div>
     </div>
 </div>
 
 <script>
-    // بيانات الأذكار الشاملة
-    const allAzkar = {
+    const dailyTasks = ["صلاة الفجر", "صلاة الظهر", "صلاة العصر", "صلاة المغرب", "صلاة العشاء", "أذكار الصباح والمساء", "ورد القرآن اليومي", "صلاة الوتر", "ركعتي الضحى"];
+    
+    const sunan = [
+        { t: "السواك", d: "مطهرة للفم مرضاة للرب - عند الوضوء والصلاة." },
+        { t: "التبسم", d: "تبسمك في وجه أخيك صدقة." },
+        { t: "السلام على الصبيان", d: "إلقاء السلام على الأطفال لتأليف قلوبهم." },
+        { t: "صلاة ركعتين بعد الذنب", d: "إذا أذنبت فقم وتوضأ وصل ركعتين واستغفر." },
+        { t: "نضح الماء على الثوب", d: "رش القليل من الماء بعد الوضوء." },
+        { t: "تحية المسجد", d: "صلاة ركعتين عند دخول المسجد قبل الجلوس." },
+        { t: "الوضوء قبل النوم", d: "النوم على طهارة." },
+        { t: "النفث في الكفين", d: "عند النوم وقراءة المعوذات والمسح على الجسد." },
+        { t: "تغطية الإناء ليلاً", d: "تغطية أوعية الطعام والشراب قبل النوم." },
+        { t: "نفض الفراش", d: "نفض الفراش قبل النوم ثلاث مرات مع التسمية." },
+        { t: "لبس الثوب باليمين", d: "البدء بالجهة اليمنى عند لبس الملابس." },
+        { t: "صلاة الضحى", d: "صلاة ركعتين على الأقل في وقت الضحى (صدقة عن مفاصل الجسم)." },
+        { t: "الذكر بعد الاستيقاظ", d: "الحمد لله الذي أحيانا بعد ما أماتنا وإليه النشور." }
+    ];
+
+    const stories = [
+        { n: "سيدنا آدم عليه السلام", s: "أول البشر وخلقه الله بيده واسكنه الجنة، ثم نزل إلى الأرض ليعمرها بعد أن تاب الله عليه.", e: "التوبة الصادقة تمحو ما قبلها." },
+        { n: "سيدنا نوح عليه السلام", s: "ظل يدعو قومه 950 سنة بصبر وعزيمة، وصنع السفينة لينجو المؤمنون من الطوفان.", e: "الصبر في الدعوة والتوكل على الله." },
+        { n: "سيدنا إبراهيم عليه السلام", s: "أبو الأنبياء، ابتلاه الله بذبح ابنه فصدق الرؤيا، ففداه الله بذبح عظيم.", e: "التسليم الكامل لأمر الله." },
+        { n: "سيدنا يونس عليه السلام", s: "التقمه الحوت في ظلمات البحر، فنادى 'لا إله إلا أنت سبحانك إني كنت من الظالمين' فاستجاب الله له.", e: "الذكر ينجي من المهالك." },
+        { n: "سيدنا يوسف عليه السلام", s: "بدأت قصته بحلم وغدر من إخوته، وانتهت بتمكين عظيم في مصر وعفو عن الظالمين.", e: "إن مع العسر يسراً." },
+        { n: "سيدنا موسى عليه السلام", s: "كليم الله الذي واجه فرعون بمعجزات العصا واليد، وشق الله له البحر لينجو بقومه.", e: "الحق دائماً ينتصر مهما طال الظلم." },
+        { n: "سيدنا صالح عليه السلام", s: "أرسله الله لثمود وأخرج لهم الناقة معجزة، فعقروها فأخذتهم الصيحة.", e: "عدم مخالفة أمر الله وتحذير من عاقبة الغرور." },
+        { n: "سيدنا عيسى عليه السلام", s: "خلقه الله بلا أب معجزة، وتكلم في المهد، وكان يبرئ الأكمه والأبرص بإذن الله.", e: "قدرة الله فوق كل الأسباب المادية." },
+        { n: "سيدنا محمد ﷺ", s: "خاتم الأنبياء والمرسلين، أرسله الله رحمة للعالمين بالقرآن الكريم ليهدي الناس للتوحيد.", e: "اتباع السنة هو طريق الفلاح والجنة." }
+    ];
+
+    const azkarData = {
         morning: [
-            {t: "أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له", c: 1},
-            {t: "آية الكرسي: اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...", c: 1},
-            {t: "سورة الإخلاص والمعوذتين", c: 3},
-            {t: "سبحان الله وبحمده", c: 100}
+            {t: "آية الكرسي", c: 1}, {t: "الإخلاص والمعوذتين", c: 3},
+            {t: "أصبحنا وأصبح الملك لله والحمد لله", c: 1},
+            {t: "سيد الاستغفار: اللهم أنت ربي لا إله إلا أنت..", c: 1},
+            {t: "يا حي يا قيوم برحمتك أستغيث", c: 1},
+            {t: "بسم الله الذي لا يضر مع اسمه شيء", c: 3},
+            {t: "سبحان الله وبحمده", c: 100}, {t: "أستغفر الله وأتوب إليه", c: 100}
         ],
         evening: [
-            {t: "أمسينا وأمسى الملك لله، والحمد لله", c: 1},
-            {t: "اللهم بك أمسينا، وبك أصبحنا، وبك نحيا، وبك نموت، وإليك المصير", c: 1},
-            {t: "سورة الإخلاص والمعوذتين", c: 3}
+            {t: "آية الكرسي", c: 1}, {t: "الإخلاص والمعوذتين", c: 3},
+            {t: "أمسينا وأمسى الملك لله والحمد لله", c: 1},
+            {t: "سيد الاستغفار", c: 1},
+            {t: "أعوذ بكلمات الله التامات من شر ما خلق", c: 3},
+            {t: "اللهم صل وسلم على نبينا محمد", c: 10},
+            {t: "سبحان الله وبحمده", c: 100}
         ],
         prayer: [
-            {t: "أستغفر الله", c: 3},
-            {t: "سبحان الله", c: 33},
-            {t: "الحمد لله", c: 33},
-            {t: "الله أكبر", c: 33}
+            {t: "أستغفر الله", c: 3}, {t: "اللهم أنت السلام ومنك السلام", c: 1},
+            {t: "سبحان الله", c: 33}, {t: "الحمد لله", c: 33}, {t: "الله أكبر", c: 33},
+            {t: "لا إله إلا الله وحده (تمام المائة)", c: 1}
         ],
         sleep: [
-            {t: "باسمك ربي وضعت جنبي، وبك أرفعه", c: 1},
-            {t: "اللهم قني عذابك يوم تبعث عبادك", c: 3}
-        ],
-        wake: [
-            {t: "الحمد لله الذي أحيانا بعد ما أماتنا وإليه النشور", c: 1}
+            {t: "باسمك ربي وضعت جنبي وبك أرفعه", c: 1}, {t: "المعوذات", c: 3},
+            {t: "اللهم قني عذابك يوم تبعث عبادك", c: 3},
+            {t: "سبحان الله (33) الحمد لله (33) الله أكبر (34)", c: 1}
         ]
     };
 
-    let currentSurah = 1;
-    let activeAzkarList = [];
-    let zIndex = 0;
-    let zCount = 0;
+    let currentSurahNum = 1; let currentList = []; let currentIndex = 0; let currentCount = 0;
 
-    // وظائف القرآن
-    function openQuran() {
-        showView('quran-view', 'المصحف الشريف');
-        if(document.getElementById('surahSelect').options.length === 0) {
-            fetch('https://api.alquran.cloud/v1/surah')
-                .then(r => r.json())
-                .then(data => {
-                    const sel = document.getElementById('surahSelect');
-                    data.data.forEach(s => sel.innerHTML += `<option value="${s.number}">${s.name}</option>`);
-                    fetchSurah(1);
-                });
-        }
+    function resetContentUI() {
+        document.getElementById('display-text').innerHTML = "";
+        document.getElementById('surahSelect').style.display = "none";
+        document.getElementById('content-controls').style.display = "none";
+        document.getElementById('extra-btn-container').innerHTML = "";
     }
 
-    function fetchSurah(num) {
-        currentSurah = parseInt(num);
-        document.getElementById('quran-text').innerText = "جاري عرض السورة...";
-        fetch(`https://api.alquran.cloud/v1/surah/${num}`)
-            .then(r => r.json())
-            .then(data => {
-                let txt = data.data.ayahs.map(a => a.text + ` ﴿${a.numberInSurah}﴾ `).join(' ');
-                document.getElementById('quran-text').innerText = txt;
-                document.getElementById('surahSelect').value = num;
-                document.getElementById('quran-view').scrollTop = 0;
-            });
-    }
-
-    function moveSurah(step) {
-        let n = currentSurah + step;
-        if(n >= 1 && n <= 114) fetchSurah(n);
-    }
-
-    // وظائف الأذكار
-    function openAzkarMenu() { showView('azkar-menu', 'اختر الأذكار'); }
-
-    function startAzkar(type) {
-        activeAzkarList = allAzkar[type];
-        zIndex = 0;
-        zCount = 0;
-        showView('azkar-active', 'الأذكار');
-        updateZikrDisplay();
-    }
-
-    function updateZikrDisplay() {
-        const item = activeAzkarList[zIndex];
-        document.getElementById('azkar-text').innerText = item.t;
-        document.getElementById('zikr-target').innerText = `التكرار المطلوب: ${item.c}`;
-        document.getElementById('zikr-count').innerText = zCount;
-    }
-
-    function countZikr() {
-        if(zCount < activeAzkarList[zIndex].c) {
-            zCount++;
-            document.getElementById('zikr-count').innerText = zCount;
-            if(zCount == activeAzkarList[zIndex].c) {
-                if (window.navigator.vibrate) window.navigator.vibrate(100);
-            }
-        }
-    }
-
-    function nextZikr() {
-        if(zIndex < activeAzkarList.length - 1) {
-            zIndex++; zCount = 0; updateZikrDisplay();
-        } else {
-            alert("تقبل الله منك!"); showMain();
-        }
-    }
-
-    // التنقل
     function showView(id, title) {
         document.getElementById('main-menu').style.display = 'none';
         document.querySelectorAll('.view-container').forEach(v => v.style.display = 'none');
+        resetContentUI();
         document.getElementById(id).style.display = 'block';
         document.getElementById('top-title').innerText = title;
         document.getElementById('masterBack').style.display = 'block';
@@ -202,6 +174,122 @@
         document.getElementById('top-title').innerText = "موقع سَكينة";
         document.getElementById('masterBack').style.display = 'none';
     }
+
+    function openPrayers() {
+        showView('prayer-view', 'مواقيت الصلاة');
+        document.getElementById('prayer-list').innerText = "جاري جلب المواقيت...";
+        navigator.geolocation.getCurrentPosition(p => {
+            fetch(`https://api.aladhan.com/v1/timings?latitude=${p.coords.latitude}&longitude=${p.coords.longitude}&method=5`)
+            .then(r => r.json()).then(d => {
+                const t = d.data.timings;
+                const m = {Fajr: "الفجر", Dhuhr: "الظهر", Asr: "العصر", Maghrib: "المغرب", Isha: "العشاء"};
+                let h = `<div style="width:100%">`;
+                for (let k in m) h += `<div class="prayer-time-item"><span>${m[k]}</span> <b>${t[k]}</b></div>`;
+                document.getElementById('prayer-list').innerHTML = h + `</div>`;
+            });
+        }, () => document.getElementById('prayer-list').innerText = "فعل الموقع GPS.");
+    }
+
+    function openChecklist() {
+        showView('checklist-view', 'ورد المحاسبة');
+        const cont = document.getElementById('checklist-container'); cont.innerHTML = "";
+        const saved = JSON.parse(localStorage.getItem('sakina_tasks') || "{}");
+        const day = new Date().toDateString();
+        dailyTasks.forEach((task, i) => {
+            const chk = saved[day] && saved[day][i] ? 'checked' : '';
+            cont.innerHTML += `<div class="checklist-item" onclick="toggleTask(${i})"><input type="checkbox" id="t-${i}" ${chk}> <span class="${chk ? 'checked-text' : ''}" id="txt-${i}">${task}</span></div>`;
+        });
+    }
+
+    function toggleTask(i) {
+        const box = document.getElementById(`t-${i}`); box.checked = !box.checked;
+        document.getElementById(`txt-${i}`).classList.toggle('checked-text');
+        const day = new Date().toDateString(); let saved = JSON.parse(localStorage.getItem('sakina_tasks') || "{}");
+        if (!saved[day]) saved[day] = {}; saved[day][i] = box.checked;
+        localStorage.setItem('sakina_tasks', JSON.stringify(saved));
+    }
+
+    function openStories() {
+        showView('content-view', 'قصص الأنبياء');
+        const s = stories[Math.floor(Math.random() * stories.length)];
+        document.getElementById('display-text').innerHTML = `<div style="font-weight:bold; font-size:24px; color:var(--main);">${s.n}</div><div style="margin:15px 0;">${s.s}</div><div class="tafseer-box"><b>العبرة:</b> ${s.e}</div>`;
+        document.getElementById('extra-btn-container').innerHTML = `<button class="btn" onclick="openStories()">قصة أخرى</button>`;
+    }
+
+    function openQuran() {
+        showView('content-view', 'المصحف');
+        document.getElementById('surahSelect').style.display = 'block';
+        document.getElementById('content-controls').style.display = 'flex';
+        if (document.getElementById('surahSelect').options.length === 0) {
+            fetch('https://api.alquran.cloud/v1/surah').then(r => r.json()).then(d => {
+                d.data.forEach(s => document.getElementById('surahSelect').innerHTML += `<option value="${s.number}">${s.name}</option>`);
+                fetchSurah(1);
+            });
+        } else { fetchSurah(currentSurahNum); }
+    }
+
+    function fetchSurah(n) {
+        currentSurahNum = n; document.getElementById('display-text').innerText = "تحميل...";
+        fetch(`https://api.alquran.cloud/v1/surah/${n}`).then(r => r.json()).then(d => {
+            document.getElementById('display-text').innerText = d.data.ayahs.map(a => a.text).join(' ');
+            document.getElementById('surahSelect').value = n;
+        });
+    }
+
+    function moveSurah(step) { let n = parseInt(currentSurahNum) + step; if (n >= 1 && n <= 114) fetchSurah(n); }
+
+    function getRandomSunnah() {
+        showView('content-view', 'سنن مهجورة');
+        const s = sunan[Math.floor(Math.random() * sunan.length)];
+        document.getElementById('display-text').innerHTML = `<div style="font-size:26px; color:var(--main); font-weight:bold;">${s.t}</div><div class="tafseer-box" style="text-align:center;">${s.d}</div>`;
+        document.getElementById('extra-btn-container').innerHTML = `<button class="btn" onclick="getRandomSunnah()">سنة أخرى</button>`;
+    }
+
+    async function getRandomAyah() {
+        showView('content-view', 'رسالة لقلبك');
+        document.getElementById('display-text').innerText = "جاري التحميل...";
+        const r = Math.floor(Math.random() * 6236) + 1;
+        const a = await fetch(`https://api.alquran.cloud/v1/ayah/${r}`).then(r => r.json());
+        const t = await fetch(`https://api.alquran.cloud/v1/ayah/${r}/ar.jalalayn`).then(r => r.json());
+        document.getElementById('display-text').innerHTML = `<div>"${a.data.text}"</div><div class="tafseer-box"><b>التفسير:</b> ${t.data.text}</div>`;
+        document.getElementById('extra-btn-container').innerHTML = `<button class="btn" onclick="getRandomAyah()">رسالة أخرى</button>`;
+    }
+
+    function openAzkarMenu() { showView('azkar-menu', 'حصن المسلم'); }
+
+    function startAzkar(type) {
+        currentList = azkarData[type]; currentIndex = 0; currentCount = 0;
+        showView('active-zikr-view', 'الأذكار');
+        document.getElementById('nextZikrBtn').style.display = 'block';
+        document.getElementById('resetChallengeBtn').style.display = 'none';
+        updateZikrUI();
+    }
+
+    function updateZikrUI() {
+        document.getElementById('active-text').innerText = currentList[currentIndex].t;
+        document.getElementById('target-info').innerText = "المطلوب: " + currentList[currentIndex].c;
+        document.getElementById('main-counter').innerText = currentCount;
+    }
+
+    function handleZikrClick() {
+        currentCount++; document.getElementById('main-counter').innerText = currentCount;
+        if (navigator.vibrate) navigator.vibrate(50);
+    }
+
+    function goToNextZikr() {
+        if (currentIndex < currentList.length - 1) { currentIndex++; currentCount = 0; updateZikrUI(); }
+        else { alert("تم بحمد الله"); showMain(); }
+    }
+
+    function openChallenge() {
+        currentCount = 0; showView('active-zikr-view', 'تحدي الألف');
+        document.getElementById('active-text').innerText = "اضغط هنا للتسبيح";
+        document.getElementById('target-info').innerText = "عداد حر";
+        document.getElementById('nextZikrBtn').style.display = 'none';
+        document.getElementById('resetChallengeBtn').style.display = 'block';
+    }
+
+    function resetCounter() { currentCount = 0; document.getElementById('main-counter').innerText = "0"; }
 </script>
 </body>
 </html>
