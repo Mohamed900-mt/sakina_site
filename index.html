@@ -6,28 +6,29 @@
     <title>موقع سكينة - طمأنينة لقلبك</title>
     <style>
         :root { --main: #1b4d3e; --accent: #c5a059; --bg: #f8f5f0; --white: #ffffff; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; text-align: center; color: #333; overflow-x: hidden; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; text-align: center; color: #333; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
         .header { background: var(--main); color: white; padding: 20px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
         .back-btn { float: right; background: var(--accent); border: none; color: white; padding: 6px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; display: none; }
-        .container { padding: 20px; max-width: 600px; margin: auto; }
+        .container { padding: 20px; max-width: 600px; margin: auto; flex: 1; width: 100%; box-sizing: border-box; }
         .telegram-btn { background: var(--white); color: var(--main); border: 2px solid var(--accent); padding: 15px; border-radius: 15px; display: block; text-decoration: none; font-weight: bold; margin-bottom: 20px; font-size: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         
-        /* تصميم أزرار التواصل الجديدة */
         .social-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
         .social-btn { flex: 1; padding: 12px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; }
         .btn-contact { background: #0088cc; color: white; }
         .btn-channel { background: var(--main); color: white; border: 1px solid var(--accent); }
-        .social-btn:active { transform: scale(0.95); }
 
         .card { background: var(--white); border-radius: 15px; padding: 20px; margin: 15px 0; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: 0.3s; border-right: 8px solid var(--accent); }
-        .card:hover { transform: translateY(-3px); }
         .view-container { display: none; animation: fadeIn 0.4s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .content-box { background: var(--white); padding: 25px; border-radius: 20px; font-size: 20px; line-height: 1.8; margin: 15px 0; min-height: 250px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); white-space: pre-wrap; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         .tafseer-box { font-size: 17px; color: #555; background: #f0f0f0; padding: 15px; border-radius: 10px; margin-top: 15px; border-top: 3px solid var(--accent); width: 100%; text-align: right; box-sizing: border-box; }
         .controls { display: flex; justify-content: center; gap: 10px; margin-top: 15px; width: 100%; }
-        .btn { background: var(--main); color: white; border: none; padding: 15px 20px; border-radius: 10px; cursor: pointer; font-size: 16px; flex: 1; font-weight: bold; transition: 0.2s; }
-        .btn:active { transform: scale(0.95); }
+        .btn { background: var(--main); color: white; border: none; padding: 15px 20px; border-radius: 10px; cursor: pointer; font-size: 16px; flex: 1; font-weight: bold; }
+        
+        /* التذييل الجديد */
+        .footer { background: #a45a2a; color: white; padding: 20px; margin-top: 40px; }
+        .footer-top { background: var(--bg); color: #555; padding: 20px; font-size: 16px; line-height: 1.6; }
+
         .big-counter { font-size: 80px; color: var(--accent); font-weight: bold; margin: 10px 0; }
         .prayer-time-item { display: flex; justify-content: space-between; padding: 12px; border-bottom: 1px solid #eee; width: 100%; font-weight: bold; box-sizing: border-box; }
         .checklist-item { display: flex; align-items: center; gap: 15px; padding: 15px; border-bottom: 1px solid #eee; width: 100%; text-align: right; cursor: pointer; box-sizing: border-box; }
@@ -72,7 +73,7 @@
     <div id="content-view" class="view-container">
         <select id="surahSelect" style="width:100%; padding:12px; border-radius:10px; margin-bottom:10px; display:none;" onchange="fetchSurah(this.value)"></select>
         <div id="display-text" class="content-box"></div>
-        <div id="content-controls" class="controls" style="display:none;">
+        <div id="quran-controls" class="controls" style="display:none;">
             <button class="btn" onclick="moveSurah(1)">السورة التالية</button>
             <button class="btn" onclick="moveSurah(-1)">السورة السابقة</button>
         </div>
@@ -90,6 +91,13 @@
     </div>
 </div>
 
+<div class="footer-top" id="footer-text">
+    هذا المشروع صدقة جارية لي ولكم ولكل المسلمين والمسلمات، نسأل الله أن يتقبله منا ومنكم
+</div>
+<div class="footer">
+    © 2026 بوت سكينة – جميع الحقوق محفوظة
+</div>
+
 <script>
     const dailyTasks = ["صلاة الفجر", "صلاة الظهر", "صلاة العصر", "صلاة المغرب", "صلاة العشاء", "أذكار الصباح والمساء", "ورد القرآن اليومي", "صلاة الوتر", "ركعتي الضحى"];
     
@@ -105,8 +113,7 @@
         { t: "تغطية الإناء ليلاً", d: "تغطية أوعية الطعام والشراب قبل النوم." },
         { t: "نفض الفراش", d: "نفض الفراش قبل النوم ثلاث مرات مع التسمية." },
         { t: "لبس الثوب باليمين", d: "البدء بالجهة اليمنى عند لبس الملابس." },
-        { t: "صلاة الضحى", d: "صلاة ركعتين على الأقل في وقت الضحى (صدقة عن مفاصل الجسم)." },
-        { t: "الذكر بعد الاستيقاظ", d: "الحمد لله الذي أحيانا بعد ما أماتنا وإليه النشور." }
+        { t: "صلاة الضحى", d: "صلاة ركعتين على الأقل في وقت الضحى." }
     ];
 
     const stories = [
@@ -114,40 +121,16 @@
         { n: "سيدنا نوح عليه السلام", s: "ظل يدعو قومه 950 سنة بصبر وعزيمة، وصنع السفينة لينجو المؤمنون من الطوفان.", e: "الصبر في الدعوة والتوكل على الله." },
         { n: "سيدنا إبراهيم عليه السلام", s: "أبو الأنبياء، ابتلاه الله بذبح ابنه فصدق الرؤيا، ففداه الله بذبح عظيم.", e: "التسليم الكامل لأمر الله." },
         { n: "سيدنا يونس عليه السلام", s: "التقمه الحوت في ظلمات البحر، فنادى 'لا إله إلا أنت سبحانك إني كنت من الظالمين' فاستجاب الله له.", e: "الذكر ينجي من المهالك." },
-        { n: "سيدنا يوسف عليه السلام", s: "بدأت قصته بحلم وغدر من إخوته، وانتهت بتمكين عظيم في مصر وعفو عن الظالمين.", e: "إن مع العسر يسراً." },
+        { n: "سيدنا يوسف عليه السلام", s: "بدأت قصته بحلم وانتهت بملك مصر، وبينهم بئر وسجن وغربة.", e: "إن مع العسر يسراً، والتمكين يأتي بعد الابتلاء." },
         { n: "سيدنا موسى عليه السلام", s: "كليم الله الذي واجه فرعون بمعجزات العصا واليد، وشق الله له البحر لينجو بقومه.", e: "الحق دائماً ينتصر مهما طال الظلم." },
-        { n: "سيدنا صالح عليه السلام", s: "أرسله الله لثمود وأخرج لهم الناقة معجزة، فعقروها فأخذتهم الصيحة.", e: "عدم مخالفة أمر الله وتحذير من عاقبة الغرور." },
-        { n: "سيدنا عيسى عليه السلام", s: "خلقه الله بلا أب معجزة، وتكلم في المهد، وكان يبرئ الأكمه والأبرص بإذن الله.", e: "قدرة الله فوق كل الأسباب المادية." },
         { n: "سيدنا محمد ﷺ", s: "خاتم الأنبياء والمرسلين، أرسله الله رحمة للعالمين بالقرآن الكريم ليهدي الناس للتوحيد.", e: "اتباع السنة هو طريق الفلاح والجنة." }
     ];
 
     const azkarData = {
-        morning: [
-            {t: "آية الكرسي", c: 1}, {t: "الإخلاص والمعوذتين", c: 3},
-            {t: "أصبحنا وأصبح الملك لله والحمد لله", c: 1},
-            {t: "سيد الاستغفار: اللهم أنت ربي لا إله إلا أنت..", c: 1},
-            {t: "يا حي يا قيوم برحمتك أستغيث", c: 1},
-            {t: "بسم الله الذي لا يضر مع اسمه شيء", c: 3},
-            {t: "سبحان الله وبحمده", c: 100}, {t: "أستغفر الله وأتوب إليه", c: 100}
-        ],
-        evening: [
-            {t: "آية الكرسي", c: 1}, {t: "الإخلاص والمعوذتين", c: 3},
-            {t: "أمسينا وأمسى الملك لله والحمد لله", c: 1},
-            {t: "سيد الاستغفار", c: 1},
-            {t: "أعوذ بكلمات الله التامات من شر ما خلق", c: 3},
-            {t: "اللهم صل وسلم على نبينا محمد", c: 10},
-            {t: "سبحان الله وبحمده", c: 100}
-        ],
-        prayer: [
-            {t: "أستغفر الله", c: 3}, {t: "اللهم أنت السلام ومنك السلام", c: 1},
-            {t: "سبحان الله", c: 33}, {t: "الحمد لله", c: 33}, {t: "الله أكبر", c: 33},
-            {t: "لا إله إلا الله وحده (تمام المائة)", c: 1}
-        ],
-        sleep: [
-            {t: "باسمك ربي وضعت جنبي وبك أرفعه", c: 1}, {t: "المعوذات", c: 3},
-            {t: "اللهم قني عذابك يوم تبعث عبادك", c: 3},
-            {t: "سبحان الله (33) الحمد لله (33) الله أكبر (34)", c: 1}
-        ]
+        morning: [{t: "آية الكرسي", c: 1}, {t: "الإخلاص والمعوذتين", c: 3}, {t: "سبحان الله وبحمده", c: 100}],
+        evening: [{t: "آية الكرسي", c: 1}, {t: "أعوذ بكلمات الله التامات", c: 3}, {t: "سبحان الله وبحمده", c: 100}],
+        prayer: [{t: "أستغفر الله", c: 3}, {t: "سبحان الله", c: 33}, {t: "الحمد لله", c: 33}, {t: "الله أكبر", c: 33}],
+        sleep: [{t: "باسمك ربي وضعت جنبي", c: 1}, {t: "المعوذات", c: 3}]
     };
 
     let currentSurahNum = 1; let currentList = []; let currentIndex = 0; let currentCount = 0;
@@ -155,7 +138,7 @@
     function resetContentUI() {
         document.getElementById('display-text').innerHTML = "";
         document.getElementById('surahSelect').style.display = "none";
-        document.getElementById('content-controls').style.display = "none";
+        document.getElementById('quran-controls').style.display = "none";
         document.getElementById('extra-btn-container').innerHTML = "";
     }
 
@@ -219,7 +202,7 @@
     function openQuran() {
         showView('content-view', 'المصحف');
         document.getElementById('surahSelect').style.display = 'block';
-        document.getElementById('content-controls').style.display = 'flex';
+        document.getElementById('quran-controls').style.display = 'flex';
         if (document.getElementById('surahSelect').options.length === 0) {
             fetch('https://api.alquran.cloud/v1/surah').then(r => r.json()).then(d => {
                 d.data.forEach(s => document.getElementById('surahSelect').innerHTML += `<option value="${s.number}">${s.name}</option>`);
